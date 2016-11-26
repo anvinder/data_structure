@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<process.h>
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+int stack[20];
+int top=-1;
+int value, temp;
+#define maxsize 20
+void push()
+{
+    cout <<"ENTER VALUE TO INSERT:";
+    cin >>value;
+if (top==maxsize)
+{
+    cout <<"stack is full";
+}
+else
+    {
+    top=top+1;
+    stack [top]= value;
+}
+cout <<" value inserted ";
+}
+
+void pop()
+{
+if (top== -1)
+    cout <<"No value present";
+else
+{
+    temp= stack[top];
+    top=top-1;
+cout <<" value "<< temp<< " popped ";
+
+}
+}
+
+void display()
+{
+    int i;
+if (top == -1)
+{
+cout <<" no element present to display ";
+}
+else
+    for (i=top;i>=0;i--)
+    {
+    cout <<"display stack element: "<<stack[i]<<endl;
+    }
+}
+
+
+int main ()
+{
+    int choice;
+    while (1)
+    {
+    cout <<"\n1. PUSH "<<endl;
+    cout <<"2. pop "<<endl;
+    cout <<"3. display "<<endl;
+    cout <<"4. exit "<<endl;
+    cout <<" \nenter your choice ";
+    cin>>choice;
+    switch(choice)
+    {
+    case 1: push();
+        break;
+    case 2: pop();
+        break;
+    case 3: display();
+        break;
+    case 4: exit(1);
+        break;
+        exit;
+    }
+    }
+    return 0;
+}
