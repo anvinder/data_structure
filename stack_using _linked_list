@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<process.h>
+#include <iostream>
+#include <stdlib.h>
+#define maxsize 25
+using namespace std;
+
+struct node
+{
+    int info;
+    node *next;
+};
+
+class stack{
+public:
+    node *top;
+    stack ()
+    {
+        top=NULL;
+    }
+void display();
+void push();
+void pop();
+};
+
+void stack :: push()
+{   int value;
+    node *ptr= new node;
+    cout<<"PUSH::";
+    cout<<"Enter number to insert: ";
+    cin>>value;
+    if (top==NULL)
+    {
+    ptr->info=value;
+    ptr->next=NULL;
+    }
+    if(top!=NULL)
+    ptr->next=top;
+    ptr->info= value;
+    top=ptr;
+    cout<<"nNew item is inserted to the stack ";
+}
+
+// POP Operation
+void stack :: pop()
+{
+    node *ptr;
+    if (top==NULL)
+    {
+        cout <<"no element to delete";
+    }
+    else
+    {
+            ptr=top;
+            top=top- 1;
+            cout <<"element "<<ptr->info<< " deleted";
+            delete ptr;
+    }
+}
+
+// Show stack
+void stack:: display()
+{
+    node *ptr= new node;
+    ptr= top;
+if (ptr==NULL)
+    {
+        cout <<"nothing to display";
+
+    }
+while (ptr!=NULL)
+    {
+    cout <<ptr->info<<" -> " ;
+    ptr = ptr->next;
+    }
+}
+
+
+int main ()
+{
+    int choice;
+    stack s;
+    while (1)
+    {
+        cout <<endl;
+    cout <<"1. PUSH "<<endl;
+    cout <<"2. pop "<<endl;
+    cout <<"3. display "<<endl;
+    cout <<"4. exit "<<endl;
+    cout <<"enter your choice ";
+    cin>>choice;
+    switch(choice)
+    {
+    case 1: s.push();
+        break;
+    case 2: s.pop();
+        break;
+    case 3: s.display();
+        break;
+    case 4: exit(1);
+        break;
+        exit;
+    }
+    }
+    return 0;
+}
