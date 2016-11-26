@@ -1,0 +1,96 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+struct node{
+    int data;
+    struct node *next;
+};
+
+class Queue{
+    private:
+        node *rear;
+        node *front;
+    public:
+        Queue();
+        void enqueue();
+        void dequeue();
+        void display();
+};
+
+Queue::Queue(){
+    rear = NULL;
+    front = NULL;
+}
+
+void Queue::enqueue(){
+    int value;
+    node *ptr = new node;
+    cout<<"Enter the value to enqueue: ";
+    cin>>value;
+    if(front == NULL)
+	{
+    ptr->data = value;
+    ptr->next = NULL;
+    front = ptr;
+    }else
+	{
+		ptr->data = value;
+    	ptr->next = NULL;
+        rear->next = ptr;
+}
+    rear = ptr;
+}
+
+void Queue::dequeue(){
+    node *ptr = new node;
+    if(front == NULL){
+        cout<<"\nQueue is Emtpty\n";
+    }else{
+        ptr = front;
+        front = front->next;
+        cout<<"The value Dequeued is "<<ptr->data;
+        delete ptr;
+    }
+}
+
+void Queue::display(){
+    node *ptr1 = new node;
+    ptr1 = front;
+    if(front == NULL){
+        cout<<"\nNothing to Display\n";
+    }else{
+        while(ptr1!=NULL){
+            cout<<endl<<ptr1->data;
+            ptr1 = ptr1->next;
+        }
+   }
+}
+
+int main(){
+    Queue queue;
+    int choice;
+    while(true){
+        cout<<"\n1.Enqueue\n2. Dequeue\n3. Display\n 4.Quit";
+        cout<<"\nEnter your choice: ";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                queue.enqueue();
+                break;
+            case 2:
+                queue.dequeue();
+                break;
+            case 3:
+                queue.display();
+                break;
+            case 4:
+                exit(0);
+               break;
+            default:
+                cout<<"\nInvalid Input. Try again! \n";
+                break;
+        }
+    }
+    return 0;
+
+}
