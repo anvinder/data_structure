@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<process.h>
+#include <iostream>
+#include <stdlib.h>
+#define size 25
+using namespace std;
+int q[size], rear, front=0;
+
+void enq()
+{
+    int value;
+    cout <<" enter value";
+    cin >>value;
+    if (rear==size && front==0)
+    {
+        cout <<"queue full";
+    }
+    else
+    {
+        q[rear]=value;
+        rear++;
+    }
+}
+
+void deq()
+{
+    if (rear==front)
+    {
+        cout <<"queue is empty";
+    }
+    else
+    {
+        cout <<"deleted value is " <<q[front];
+        front ++;
+    }
+}
+
+void display()
+{
+    int temp=0;
+    if (front==rear)
+    {
+        cout<<"no element to display";
+    }
+    else
+        for (int i=front;i<rear;i++)
+        cout <<q[i]<<"->";
+
+}
+
+int main ()
+{
+    int choice;
+    while (1)
+    {
+        cout <<endl;
+    cout <<"1. enqueue "<<endl;
+    cout <<"2. dequeue "<<endl;
+    cout <<"3. display "<<endl;
+    cout <<"4. exit "<<endl;
+    cout <<"enter your choice ";
+    cin>>choice;
+    switch(choice)
+    {
+    case 1: enq();
+        break;
+    case 2: deq();
+        break;
+    case 3: display();
+        break;
+    case 4: exit(1);
+        break;
+        exit;
+    }
+    }
+    return 0;
+}
